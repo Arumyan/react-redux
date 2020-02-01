@@ -1,23 +1,23 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { add2 } from './redux/actions/actions';
 class Counter extends Component {
   render() {
     return (
-      <div style={{padding: 20, border: '1px solid #ccc'}}>
+      <div style={{ padding: 20, border: '1px solid #ccc' }}>
         <h1>Counter {this.props.counter}</h1>
-        <hr/>
+        <hr />
         <div>
           <button onClick={() => this.props.onAdd2(15)}>Add</button>
           <button onClick={() => this.props.onAdd2(-15)}>Sub</button>
         </div>
       </div>
-    )
+    );
   }
 }
 
 function mapStateToProps(state) {
-  console.log(state)
+  //console.log(state)
   return {
     counter: state.counter2.counter2
   };
@@ -25,8 +25,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onAdd2: (number) => dispatch({ type: 'ADD2', payload: number }),
+    onAdd2: number => dispatch(add2(number))
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter)
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
